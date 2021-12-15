@@ -715,7 +715,7 @@
                             <div class="widget">
                                 <div class="banner-spot clearfix">
                                     <div class="banner-img">
-                                        <img src="{{ asset('public/baca/upload/Logo.png') }}" alt="" class="img-fluid">
+                                        <img src="{{ asset('public/baca/upload/Logo2.png') }}" alt="" class="img-fluid">
                                     </div><!-- end banner-img -->
                                 </div><!-- end banner -->
                             </div><!-- end widget -->
