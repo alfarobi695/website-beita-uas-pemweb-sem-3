@@ -37,7 +37,7 @@
                 <table class="table table-bordered">
                     <tbody>                      
                       <tr>
-                        <td><strong>Gambar Berita<strong></td>
+                        <td><strong>Gambar Berita<strong></td> 
                         <td><img 
                  src="{{asset('public/gambar_berita/'.$DataBerita->gambar_berita)}}" 
                         class="img-fluid" width="200px;"></td>

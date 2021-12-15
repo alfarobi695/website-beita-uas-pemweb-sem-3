@@ -7,6 +7,8 @@ use App\Models\Berita;
 use App\Models\KategoriBerita;
 use App\Models\Penulis;
 use App\Models\Tag;
+use App\Models\Users;
+
 class BacaIn extends Controller
 {
     /**
@@ -39,11 +41,13 @@ class BacaIn extends Controller
         $data_penulis = Penulis::orderBy('penulis','asc')->
         get();
         
+        $data_user = Users::orderBy('id','asc')->
+        get();
         $no = ($batas * ($data_berita->currentpage()-1))+1;
 
         return view('baca.index', ['DataBerita' => 
         $data_berita,'DataKategori' => $data_kategori, 
-        'DataPenulis' => $data_penulis,  'no'=>$no
+        'DataPenulis' => $data_penulis,  'no'=>$no, 'DataUser' => $data_user
          ]);
 
        
