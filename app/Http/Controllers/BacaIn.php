@@ -82,17 +82,17 @@ class BacaIn extends Controller
      */
     public function show($id)
     {
-        // $data_berita = Berita::find($id);
-        // $data_kategori = KategoriBerita::
-        // orderBy('kategori_berita','asc')->get();
-        // $data_penulis = Penulis::orderBy('penulis','asc')->
-        // get();
-        // $data_tag = Tag::orderBy('tag','asc')->get();
-        // $tag_berita = $data_berita->tag->pluck('id_tag')->toArray();
-        // return view('baca.index', ['DataBerita' => 
-        // $data_berita,'DataKategori' => $data_kategori, 
-        // 'DataPenulis' => $data_penulis, 'DataTag' => $data_tag, 
-        // 'TagBerita' => $tag_berita ]);
+        $data_berita = Berita::find($id);
+        $data_kategori = KategoriBerita::
+        orderBy('kategori_berita','asc')->get();
+        $data_penulis = Penulis::orderBy('penulis','asc')->
+        get();
+        $data_tag = Tag::orderBy('tag','asc')->get();
+        $tag_berita = $data_berita->tag->pluck('id_tag')->toArray();
+        return view('baca.single', ['DataBerita' => 
+        $data_berita,'DataKategori' => $data_kategori, 
+        'DataPenulis' => $data_penulis, 'DataTag' => $data_tag, 
+        'TagBerita' => $tag_berita ]);
     }
 
     /**
