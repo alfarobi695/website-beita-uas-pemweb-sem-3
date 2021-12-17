@@ -17,7 +17,7 @@ class KontenController extends Controller
      */
     public function index()
     {
-        $batas = 2;
+        $batas = 5;
         $data_konten = Konten_web::orderBy('id_konten')->paginate($batas);
         $no = ($batas * ($data_konten->currentpage()-1))+1;
         return view('admin.page.konten.tampil', 

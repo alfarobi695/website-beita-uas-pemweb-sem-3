@@ -24,7 +24,8 @@ use App\Http\Controllers\BacaIn;
 */
 
 Route::get('/index', [BacaIn::class,'index'])->name('baca.index');
-Route::get('/single', [BacaIn::class,'show']);
+Route::get('/index.{id}', [BacaIn::class,'show']);
+Route::post('/index', [BacaIn::class,'store']);
 
 
 

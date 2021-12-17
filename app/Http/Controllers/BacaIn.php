@@ -6,8 +6,14 @@ use Illuminate\Http\Request;
 use App\Models\Berita;
 use App\Models\KategoriBerita;
 use App\Models\Penulis;
+use App\Models\Konten_web;
+use App\Models\Serviceapp;
 use App\Models\Tag;
 use App\Models\Users;
+use DateTime;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+
 
 class BacaIn extends Controller
 {
@@ -19,21 +25,6 @@ class BacaIn extends Controller
     public function index()
     {
         
-        // $data_header1 = Berita::where('judul', 'Trending 1')->first();
-        
-        // $data_header2 = Berita::where('judul', 'Trending 2')->first();
-
-        // $data_header3 = Berita::where('judul', 'Trending 3')->first();
-
-        // $data_berita = Berita::orderBy('judul')->get();
-
-        
-        // return view('baca.index', [
-        //     'DataBerita' => $data_berita,
-        //     'DataHeader1'=> $data_header1,
-        //     'DataHeader2'=> $data_header2,
-        //     'DataHeader3'=> $data_header3
-        // ]);
         $batas = 9;
         $data_berita = Berita::orderBy('id_berita')->paginate($batas);
         $data_kategori = KategoriBerita::
@@ -41,18 +32,30 @@ class BacaIn extends Controller
         $data_penulis = Penulis::orderBy('penulis','asc')->
         get();
         
+        $service1 = Serviceapp::where('id_serviceapp',[1])->first();
+        $service2 = Serviceapp::where('id_serviceapp',[2])->first();
+        $service3 = Serviceapp::where('id_serviceapp',[3])->first();
+
+
+
         $data_user = Users::orderBy('id','asc')->
         get();
         $no = ($batas * ($data_berita->currentpage()-1))+1;
 
-        return view('baca.index', ['DataBerita' => 
-        $data_berita,'DataKategori' => $data_kategori, 
-        'DataPenulis' => $data_penulis,  'no'=>$no, 'DataUser' => $data_user
-         ]);
+        return view('baca.index', [
+            'DataBerita' => $data_berita,
+            'DataKategori' => $data_kategori, 
+            'DataPenulis' => $data_penulis,  
+            'no'=>$no, 
+            'DataUser' => $data_user,
+            'Service1'=> $service1,
+            'Service2'=> $service2,
+            'Service3'=> $service3,
+            
+        ]);
 
-       
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -71,7 +74,21 @@ class BacaIn extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name_cus' => 'required',
+            'email_cus' => 'required',
+            'pesan_cus' => 'required',
+        ])->validated();
+
+        $service= new Konten_web;
+        $service->id_konten=$request->konten_web;
+        $service->judul = $request->name_cus;
+        $service->jenis_konten = $request->email_cus;
+        $service->isi = $request->pesan_cus;
+        $service->tanggal = new DateTime();
+        $service->save();
+        return redirect('/index#contact');
+
     }
 
     /**
@@ -87,12 +104,18 @@ class BacaIn extends Controller
         orderBy('kategori_berita','asc')->get();
         $data_penulis = Penulis::orderBy('penulis','asc')->
         get();
+        $data_user = Users::orderBy('id','asc')->
+        get();
         $data_tag = Tag::orderBy('tag','asc')->get();
         $tag_berita = $data_berita->tag->pluck('id_tag')->toArray();
-        return view('baca.single', ['DataBerita' => 
-        $data_berita,'DataKategori' => $data_kategori, 
-        'DataPenulis' => $data_penulis, 'DataTag' => $data_tag, 
-        'TagBerita' => $tag_berita ]);
+        return view('baca.single', [
+            'DataBerita' => $data_berita,
+            'DataKategori' => $data_kategori, 
+            'DataPenulis' => $data_penulis, 
+            'DataTag' => $data_tag, 
+            'TagBerita' => $tag_berita,
+            'DataUser' => $data_user 
+        ]);
     }
 
     /**
