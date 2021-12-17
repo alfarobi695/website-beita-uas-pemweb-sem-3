@@ -54,7 +54,7 @@
                     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <a class="navbar-brand" href="tech-index.html"><img src="images/version/tech-logo.png" alt=""></a>
+                    <a class="navbar-brand" href="tech-index.html"><img src="images/version/tech-logo1.png" alt=""></a>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
@@ -168,20 +168,6 @@
 
                             <hr class="invis1">
 
-                            <div class="custombox clearfix">
-                                <h4 class="small-title">Leave a Reply</h4>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <form class="form-wrapper">
-                                            <input type="text" class="form-control" placeholder="Your name">
-                                            <input type="text" class="form-control" placeholder="Email address">
-                                            <input type="text" class="form-control" placeholder="Website">
-                                            <textarea class="form-control" placeholder="Your comment"></textarea>
-                                            <button type="submit" class="btn btn-primary">Submit Comment</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
                         </div><!-- end page-wrapper -->
                     </div><!-- end col -->
                 </div><!-- end row -->
@@ -194,7 +180,7 @@
                     <div class="col-lg-7">
                         <div class="widget">
                             <div class="footer-text text-left">
-                                <a href="index.html"><img src="{{ asset('public/baca/images/version/tech-footer-logo.png') }}" alt="" class="img-fluid"></a>
+                                <a href="index.html"><img src="{{ asset('public/baca/images/version/tech-footer-logo1.png') }}" alt="" class="img-fluid"></a>
                                 <p>Tech Blog is a technology blog, we sharing marketing, news and gadget articles.</p>
                                 <div class="social">
                                     <a href="https://www.instagram.com/_god.it/?hl=id" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>              
